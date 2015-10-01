@@ -116,10 +116,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   availableColors:
   - {r: 1, g: 0, b: 0, a: 0}
-  - {r: 1, g: .434482723, b: 0, a: 0}
-  - {r: .965517282, g: 1, b: 0, a: 0}
-  - {r: .427586317, g: 1, b: 0, a: 0}
-  - {r: 0, g: .0896549225, b: 1, a: 0}
+  - {r: 1, g: 1, b: 0, a: 0}
+  - {r: 0, g: 1, b: 0, a: 0}
+  - {r: 0, g: 1, b: 1, a: 0}
+  - {r: 0, g: 0, b: 1, a: 0}
+  - {r: 1, g: 0, b: 1, a: 0}
 --- !u!195 &19548514
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -149,7 +150,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: availableColors.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: availableColors.Array.data[0].a
@@ -169,7 +170,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: availableColors.Array.data[1].g
-      value: .434482723
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: availableColors.Array.data[2].g
@@ -177,7 +178,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: availableColors.Array.data[2].r
-      value: .965517282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: availableColors.Array.data[3].g
@@ -185,7 +186,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: availableColors.Array.data[3].r
-      value: .427586317
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: availableColors.Array.data[3].b
@@ -193,7 +194,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: availableColors.Array.data[4].g
-      value: .0896549225
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: availableColors.Array.data[4].r
@@ -222,6 +223,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: availableColors.Array.data[4].a
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: availableColors.Array.data[2].b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: availableColors.Array.data[5].r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
