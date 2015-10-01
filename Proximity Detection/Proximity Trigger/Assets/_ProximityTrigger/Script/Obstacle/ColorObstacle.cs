@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+
+
 
 public class ColorObstacle : MonoBehaviour
 {
@@ -11,6 +14,8 @@ public class ColorObstacle : MonoBehaviour
     private Color currentColor;
 
     public Color CurrentColor {get { return currentColor; } }
+
+
 
     private void Awake()
     {
@@ -33,14 +38,13 @@ public class ColorObstacle : MonoBehaviour
     private void OnVolumeTriggerExit(TriggerVolume triggerVolume, Collider collider)
     {
         BaseUnit targetBaseUnit = collider.gameObject.GetComponent<BaseUnit>();
-
-
         LineRenderDisplay currentLineRenderDisplay = GetLineRenderOf(targetBaseUnit);
 
+        RemoveColor(targetBaseUnit.Color);
         lineRenderDisplays.Remove(currentLineRenderDisplay);
         Destroy(currentLineRenderDisplay.gameObject);
-        RemoveColor(targetBaseUnit.Color);
     }
+
 
     private void OnVolumeTriggerEnter(TriggerVolume triggerVolume, Collider collider)
     {
@@ -57,6 +61,7 @@ public class ColorObstacle : MonoBehaviour
 
         AddColor(targetBaseUnit.Color);
     }
+    
 
     private LineRenderDisplay GetLineRenderOf(BaseUnit targetBaseUnit)
     {
@@ -68,6 +73,7 @@ public class ColorObstacle : MonoBehaviour
         }
         return null;
     }
+
 
     private void AddColor(Color targetColor)
     {
@@ -95,5 +101,6 @@ public class ColorObstacle : MonoBehaviour
         currentColor.b = Mathf.Clamp(currentColor.b, 0, 255);
 
         renderer.material.color = currentColor;
+
     }
 }

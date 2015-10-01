@@ -12,7 +12,12 @@ public class TriggerVolume : MonoBehaviour
     [SerializeField] private LayerMask collisionMask = -1;
 
     private new Collider collider;
-    private List<Collider> containingCollider = new List<Collider>(); 
+    private List<Collider> containingCollider = new List<Collider>();
+
+    public int ContainingCount
+    {
+        get { return containingCollider.Count; }
+    }
 
 
     private void Awake()

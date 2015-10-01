@@ -115,11 +115,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableColors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 1, g: .434482723, b: 0, a: 1}
-  - {r: .965517282, g: 1, b: 0, a: 1}
-  - {r: .427586317, g: 1, b: 0, a: 1}
-  - {r: 0, g: .0896549225, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0, a: 0}
+  - {r: 1, g: .434482723, b: 0, a: 0}
+  - {r: .965517282, g: 1, b: 0, a: 0}
+  - {r: .427586317, g: 1, b: 0, a: 0}
+  - {r: 0, g: .0896549225, b: 1, a: 0}
 --- !u!195 &19548514
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -153,7 +153,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: availableColors.Array.data[0].a
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: availableColors.Array.data[0].r
@@ -206,6 +206,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: availableColors.Array.data[1].a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: availableColors.Array.data[2].a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: availableColors.Array.data[3].a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: availableColors.Array.data[4].a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

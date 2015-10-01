@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6af815cca1f7048adeec21b67a5137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxUnits: 20
+  maxUnits: 30
   baseUnitPrefab: {fileID: 11485896, guid: 4c46a84ad21296d43af1f81268cc8bb1, type: 2}
 --- !u!1 &498712943
 GameObject:
@@ -358,7 +358,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 388d57f145170044f9253df3a94b48cb, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1

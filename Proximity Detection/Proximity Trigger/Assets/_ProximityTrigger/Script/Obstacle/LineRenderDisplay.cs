@@ -29,6 +29,12 @@ public class LineRenderDisplay : MonoBehaviour
         lineRenderer.SetPosition(0, colorObstacle.transform.position);
         lineRenderer.SetPosition(1, baseUnit.transform.position);
 
-        lineRenderer.SetColors(colorObstacle.CurrentColor, baseUnit.Color);
+
+        Color colorBegining = colorObstacle.CurrentColor;
+        colorBegining.a = 1.0f;
+
+        Color colorEnd = baseUnit.Color;
+        colorEnd.a = 1.0f;
+        lineRenderer.SetColors(colorBegining, colorEnd);
     }
 }

@@ -16,6 +16,8 @@ public class BaseUnit : MonoBehaviour
     {
         navMeshAgentController = GetComponent<NavMeshAgentController>();
         renderer = GetComponent<Renderer>();
+        color = availableColors[Random.Range(0, availableColors.Length)];
+        renderer.material.color = color;
     }
 
     private void Start()
@@ -25,10 +27,6 @@ public class BaseUnit : MonoBehaviour
 
     private void Initiliaze()
     {
-        color = availableColors[Random.Range(0, availableColors.Length)];
-        renderer.material.color = color;
-
-
         Vector3 initialPoition = new Vector3(Random.Range(-25.0f, 25.0f), 0, Random.Range(-25.0f, 25.0f));
         navMeshAgentController.WarpPosition(initialPoition);
 
