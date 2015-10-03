@@ -3,8 +3,8 @@ using System.Collections;
 
 public class LineRenderDisplay : MonoBehaviour
 {
+  
     private LineRenderer lineRenderer;
-
     private ColorObstacle colorObstacle;
     private BaseUnit baseUnit;
 
@@ -19,7 +19,6 @@ public class LineRenderDisplay : MonoBehaviour
     {
         colorObstacle = targetColorObstacle;
         baseUnit = targetBaseUnit;
-
         gameObject.SetActive(true);
     }
 
@@ -28,11 +27,8 @@ public class LineRenderDisplay : MonoBehaviour
     {
         lineRenderer.SetPosition(0, colorObstacle.transform.position);
         lineRenderer.SetPosition(1, baseUnit.transform.position);
-
-
         Color colorBegining = colorObstacle.CurrentColor;
         colorBegining.a = 1.0f;
-
         Color colorEnd = baseUnit.Color;
         colorEnd.a = 1.0f;
         lineRenderer.SetColors(colorBegining, colorEnd);

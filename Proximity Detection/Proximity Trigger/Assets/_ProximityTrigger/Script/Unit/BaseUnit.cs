@@ -36,11 +36,13 @@ public class BaseUnit : MonoBehaviour
     private void OnEnable()
     {
         navMeshAgentController.OnReachDestination += SeekDestination;
+        navMeshAgentController.OnCantReachDestination += SeekDestination;
     }
 
     private void OnDisable()
     {
         navMeshAgentController.OnReachDestination -= SeekDestination;
+        navMeshAgentController.OnCantReachDestination -= SeekDestination;
     }
 
     private void SeekDestination()

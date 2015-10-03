@@ -11,10 +11,10 @@ public class ColorObstacle : MonoBehaviour
 
     private new Renderer renderer;
     private List<LineRenderDisplay> lineRenderDisplays = new List<LineRenderDisplay>();
-    private Color currentColor;
+    private Color targetColor;
+    public Color CurrentColor {get { return renderer.material.color; } }
 
-    public Color CurrentColor {get { return currentColor; } }
-
+    private Dictionary<Color, float> colorProportion = new Dictionary<Color, float>();
 
 
     private void Awake()
@@ -40,9 +40,16 @@ public class ColorObstacle : MonoBehaviour
         BaseUnit targetBaseUnit = collider.gameObject.GetComponent<BaseUnit>();
         LineRenderDisplay currentLineRenderDisplay = GetLineRenderOf(targetBaseUnit);
 
-        RemoveColor(targetBaseUnit.Color);
         lineRenderDisplays.Remove(currentLineRenderDisplay);
         Destroy(currentLineRenderDisplay.gameObject);
+
+
+        colorProportion[targetBaseUnit.Color] -= 1.0f;
+
+        if (colorProportion[targetBaseUnit.Color] <= 0.0f)
+            colorProportion.Remove(targetBaseUnit.Color);
+
+        UpdateColor();
     }
 
 
@@ -59,9 +66,30 @@ public class ColorObstacle : MonoBehaviour
 
         lineRenderDisplays.Add(lineRenderDisplayClone);
 
-        AddColor(targetBaseUnit.Color);
+
+        if (!colorProportion.ContainsKey(targetBaseUnit.Color))
+            colorProportion.Add(targetBaseUnit.Color, 0.0f);
+
+        colorProportion[targetBaseUnit.Color] += 1.0f;
+
+
+        UpdateColor();
     }
-    
+
+    private void UpdateColor()
+    {
+        targetColor = Color.black;
+
+        foreach (KeyValuePair<Color, float> colorProportionKeyValuePair in colorProportion)
+        {
+            float proportion = colorProportionKeyValuePair.Value/(float)triggerVolume.ContainingCount;
+
+            targetColor.r += colorProportionKeyValuePair.Key.r*proportion;
+            targetColor.g += colorProportionKeyValuePair.Key.g*proportion;
+            targetColor.b += colorProportionKeyValuePair.Key.b*proportion;
+        }
+    }
+
 
     private LineRenderDisplay GetLineRenderOf(BaseUnit targetBaseUnit)
     {
@@ -74,33 +102,8 @@ public class ColorObstacle : MonoBehaviour
         return null;
     }
 
-
-    private void AddColor(Color targetColor)
+    private void Update()
     {
-        currentColor = renderer.material.color;
-        currentColor.r += targetColor.r;
-        currentColor.g += targetColor.g;
-        currentColor.b += targetColor.b;
-
-        currentColor.r = Mathf.Clamp(currentColor.r, 0, 255);
-        currentColor.g = Mathf.Clamp(currentColor.g, 0, 255);
-        currentColor.b = Mathf.Clamp(currentColor.b, 0, 255);
-
-        renderer.material.color = currentColor;
-    }
-
-    private void RemoveColor(Color targetColor)
-    {
-        currentColor = renderer.material.color;
-        currentColor.r -= targetColor.r;
-        currentColor.g -= targetColor.g;
-        currentColor.b -= targetColor.b;
-
-        currentColor.r = Mathf.Clamp(currentColor.r, 0, 255);
-        currentColor.g = Mathf.Clamp(currentColor.g, 0, 255);
-        currentColor.b = Mathf.Clamp(currentColor.b, 0, 255);
-
-        renderer.material.color = currentColor;
-
+        renderer.material.color = Color.Lerp(renderer.material.color, targetColor, Time.deltaTime*2.0f);
     }
 }

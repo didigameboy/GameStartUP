@@ -6,7 +6,7 @@ using System.Collections;
 public class NavMeshAgentController : MonoBehaviour
 {
     public Action OnReachDestination;
-
+    public Action OnCantReachDestination;
 
     private NavMeshAgent navMeshAgent;
 
@@ -43,12 +43,22 @@ public class NavMeshAgentController : MonoBehaviour
             {
                 if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
                 {
-                    if (!navMeshAgent.hasPath || Mathf.Abs(navMeshAgent.velocity.sqrMagnitude) < float.Epsilon)
+                    if (navMeshAgent.pathStatus == NavMeshPathStatus.PathComplete)
+                    {
+                        if (!navMeshAgent.hasPath || Mathf.Abs(navMeshAgent.velocity.sqrMagnitude) < float.Epsilon)
+                        {
+                            reachDestination = true;
+
+                            if (OnReachDestination != null)
+                                OnReachDestination();
+                        }
+                    }
+                    else
                     {
                         reachDestination = true;
 
-                        if (OnReachDestination != null)
-                            OnReachDestination();
+                        if (OnCantReachDestination != null)
+                            OnCantReachDestination();
                     }
                 }
             }
